@@ -5,8 +5,18 @@
 
 <p>
   <b>User:</b>
-  <%=h @log.user_id %>
+  <%=h @log.user.login %>
 </p>
+
+<p>
+	<b><%= link_to "Create new entry", new_entry_url %></b>
+</p>
+
+<ul>
+	<% @log.entries.each do |entry| %>
+		<li><%= entry.created_at %>: <%= entry.value %></li>
+	<% end %>
+</ul>
 
 
 <%= link_to 'Edit', edit_log_path(@log) %> |

@@ -32,6 +32,16 @@
   <b>Current login ip:</b>
   <%=h @user.current_login_ip %>
 </p>
+
+<p>
+	<b>Logs:</b>
+	<ul>
+		<% @user.logs.each do |log| %>
+			<li><%= link_to log.name, log_url(log.id) %></li>
+		<% end %>
+		<li><strong><%= link_to 'Create new log', new_log_url %></strong></li>
+	</ul>
+</p>
  
  
 <%= link_to 'Edit', edit_account_path %>
