@@ -1,0 +1,22 @@
+<h1>Listing logs</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>User</th>
+  </tr>
+
+<% @logs.each do |log| %>
+  <tr>
+    <td><%=h log.name %></td>
+    <td><%=h log.user_id %></td>
+    <td><%= link_to 'Show', log %></td>
+    <td><%= link_to 'Edit', edit_log_path(log) %></td>
+    <td><%= link_to 'Destroy', log, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New log', new_log_path %>
