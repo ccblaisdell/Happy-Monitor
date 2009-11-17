@@ -1,0 +1,13 @@
+<p>
+  <b>Log:</b>
+  <%=h @entry.log_id %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%=h @entry.value %>
+</p>
+
+
+<%= link_to 'Edit', edit_entry_path(@entry) %> |
+<%= link_to 'Back', entries_path %>

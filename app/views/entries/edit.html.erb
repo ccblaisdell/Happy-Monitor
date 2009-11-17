@@ -1,0 +1,20 @@
+<h1>Editing entry</h1>
+
+<% form_for(@entry) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :log_id %><br />
+    <%= f.text_field :log_id %>
+  </p>
+  <p>
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @entry %> |
+<%= link_to 'Back', entries_path %>
