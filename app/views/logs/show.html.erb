@@ -9,14 +9,9 @@
 </p>
 
 <p>
-	<b><%= link_to "Create new entry", new_entry_url %></b>
+	<%= link_to "Entries", log_entries_path(@log) %><br />
+	<b><%= link_to "Create new entry", new_log_entry_path(@log) %></b>
 </p>
-
-<ul>
-	<% @log.entries.each do |entry| %>
-		<li><%= entry.created_at %>: <%= entry.value %></li>
-	<% end %>
-</ul>
 
 
 <%= link_to 'Edit', edit_log_path(@log) %> |

@@ -1,12 +1,7 @@
 <h1>Editing entry</h1>
 
-<% form_for(@entry) do |f| %>
+<% form_for([@log, @entry]) do |f| %>
   <%= f.error_messages %>
-
-  <p>
-    <%= f.label :log_id %><br />
-    <%= f.text_field :log_id %>
-  </p>
   <p>
     <%= f.label :value %><br />
     <%= f.text_field :value %>
@@ -16,5 +11,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @entry %> |
-<%= link_to 'Back', entries_path %>
+<%= link_to 'Show', log_entry_path(@log, @entry) %> |
+<%= link_to 'Back', log_entries_path(@log) %>

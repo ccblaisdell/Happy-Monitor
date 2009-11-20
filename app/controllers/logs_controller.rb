@@ -7,6 +7,7 @@ class LogsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @logs }
+      format.json  { render :json => @logs }
     end
   end
 
@@ -18,6 +19,7 @@ class LogsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @log }
+      format.json  { render :json => @log }
     end
   end
 
@@ -29,6 +31,7 @@ class LogsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @log }
+      format.json  { render :json => @log }
     end
   end
 
@@ -47,9 +50,11 @@ class LogsController < ApplicationController
         flash[:notice] = 'Log was successfully created.'
         format.html { redirect_to(@log) }
         format.xml  { render :xml => @log, :status => :created, :location => @log }
+        format.json  { render :json => @log, :status => :created, :location => @log }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @log.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @log.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -64,9 +69,11 @@ class LogsController < ApplicationController
         flash[:notice] = 'Log was successfully updated.'
         format.html { redirect_to(@log) }
         format.xml  { head :ok }
+        format.json  { head :ok }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @log.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @log.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -80,6 +87,7 @@ class LogsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(logs_url) }
       format.xml  { head :ok }
+      format.json  { head :ok }
     end
   end
 end

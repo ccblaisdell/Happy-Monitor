@@ -9,12 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091117224634) do
+ActiveRecord::Schema.define(:version => 20091120002607) do
 
   create_table "entries", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "log_id"
+    t.float    "value"
   end
 
   create_table "logs", :force => true do |t|

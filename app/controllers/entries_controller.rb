@@ -1,12 +1,15 @@
 class EntriesController < ApplicationController
+  before_filter :fetch_log
+  
   # GET /entries
   # GET /entries.xml
   def index
-    @entries = Entry.all
+    @entries = @log.entries
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @entries }
+      format.json  { render :json => @entries }
     end
   end
 
@@ -18,6 +21,7 @@ class EntriesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @entry }
+      format.json  { render :json => @entry }
     end
   end
 
@@ -29,6 +33,7 @@ class EntriesController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @entry }
+      format.json  { render :json => @entry }
     end
   end
 
@@ -45,11 +50,13 @@ class EntriesController < ApplicationController
     respond_to do |format|
       if @entry.save
         flash[:notice] = 'Entry was successfully created.'
-        format.html { redirect_to(@entry) }
+        format.html { redirect_to([@log, @entry]) }
         format.xml  { render :xml => @entry, :status => :created, :location => @entry }
+        format.json  { render :json => @entry, :status => :created, :location => @entry }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @entry.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @entry.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -62,11 +69,13 @@ class EntriesController < ApplicationController
     respond_to do |format|
       if @entry.update_attributes(params[:entry])
         flash[:notice] = 'Entry was successfully updated.'
-        format.html { redirect_to(@entry) }
+        format.html { redirect_to([@log, @entry]) }
         format.xml  { head :ok }
+        format.json  { head :ok }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @entry.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @entry.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -80,6 +89,12 @@ class EntriesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(entries_url) }
       format.xml  { head :ok }
+      format.json  { head :ok }
     end
   end
+  
+  private
+    def fetch_log
+      @log = Log.find params[:log_id]
+    end
 end
