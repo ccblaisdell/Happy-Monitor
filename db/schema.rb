@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091120002607) do
+ActiveRecord::Schema.define(:version => 20091122041255) do
 
   create_table "entries", :force => true do |t|
     t.datetime "created_at"
@@ -23,6 +23,11 @@ ActiveRecord::Schema.define(:version => 20091120002607) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "notification_frequency",   :default => 60, :null => false
+    t.string   "exclude_notifications_on"
+    t.time     "notify_after"
+    t.time     "notify_before"
+    t.datetime "next_notification"
   end
 
   create_table "tags", :force => true do |t|
